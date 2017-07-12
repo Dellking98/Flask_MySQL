@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>The form</title>
+    <link rel="stylesheet" type='text/css' href="{{ url_for('static', filename = 'styling.css')}}">
   </head>
   <body>
     <form action="/action_page.php" method="get">
@@ -10,7 +11,8 @@
       Last name: <input type="text" name="lname"><br>
       <input type="submit" value="Submit">
     </form>
-    
+
+    <h1> {{ words }} </h1>
 
   </body>
 </html>

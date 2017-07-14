@@ -14,7 +14,7 @@ add = Flask(__name__)
 
 def learing():
     return "Delly"
-add.run(debug = Ture)
+add.run(debug = True)
 
 #from flask import Flask, render_template  # Import Flask to allow us to create our app, and import
                                           # render_template to allow us to render index.html.

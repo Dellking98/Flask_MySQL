@@ -16,13 +16,14 @@
       <input type="submit" name="submit" value="Submit Your Guess">
     </form>
 
-{%if sesstion['user'] == 'Your numder is to low':%}
+{%if session['user'] == 'Your numder is to low':%}
   <p>Your numder is to low</p>
-{%elif sesstion['user'] == 'Your numder is to high':%}
+{%elif session['user'] == 'Your numder is to high':%}
   <p> Your number is to high</p>
-{%elif sesstion['user'] == 'Winer':%}
-  <p>Winner</p>
+{%elif session['user'] == 'Winer':%}
+  <a href="/reset">Winner</a>
 {%endif%}
+
 
 
 

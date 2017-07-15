@@ -1,0 +1,7 @@
+/*<!-- {%if user < session['counter1']:%}
+   <p>"Your numder is to high"<p>
+{%elif user > session['counter1']:%}
+  <p>print 'Your number is to low'<p>
+{%elif user is session['counter1']%}
+  <p> print "You win" <p>
+{%endif%} -->*/

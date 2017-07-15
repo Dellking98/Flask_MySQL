@@ -31,12 +31,17 @@ def the_form():
         session['user'] = 'Your numder is to low'
         print 'Your numder is to low'
     elif user > session['counter1']:
-        sesstion['user'] = 'Your numder is to high'
+        session['user'] = 'Your numder is to high'
         print 'Your number is to high'
     elif user is session['counter1']:
-        sesstion['user'] = 'Winner'
+        session['user'] = 'Winner'
         print 'Winner'
+    return redirect('/')
 
+@app.route('/reset', methods = ["POST"])
+
+def playAgain():
+    session.clear
 
     return redirect('/')
 

@@ -1,22 +1,36 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, session
 
-add = Flask(__name__)
-
-@add.route('/')
+app = Flask(__name__)
+app.secret_key ='secret'
+@app.route('/')
 
 def form1():
     return render_template('form_text.html')
 
-@add.route('/User1', methods = ["POST"] )
+@app.route('/User1', methods = ["POST"] )
 
 def create_users1():
-    return render_template('/index1.html')
 
     print "Got Post info"
 
-    Name = request.form["name"]
-    select = request.form['list']
-    comment = request.form['comment']
+    session['name'] = request.form["name"]
 
+    session['select'] = request.form['list1']
+
+    session['select1'] = request.form['list2']
+
+    session['comment'] = request.form['comment']
+
+    return redirect('/seccess')
+
+@app.route('/seccess')
+
+def seccess():
+    return render_template('index1.html')
+
+@app.route('/reset', methods=['POST'])
+
+def reset():
     return redirect('/')
-add.run(debug = True)
+
+app.run(debug = True)

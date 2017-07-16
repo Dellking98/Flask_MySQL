@@ -8,11 +8,15 @@
     <h1>Index Page</h1>
     <h3>Create a User</h3>
 
-    <form class="" action="/users" method="post">
-      User Name:<input type="text" name="name" value="">
-      Email: <input type="text" name="email" value="">
-      <input type="submit" name="" value="create user">
+    <p>Your Name: {{ session['name']  }}</p>
+    <p>Dojo Location: {{ session['select'] }}</p>
+    <p>Favorite Language: {{ session['select1'] }}</p>
+    <p>Comment: {{ session['comment'] }}</p>
+
+    <form class="" action="reset" method="post">
+      <input type="submit" name="" value="Go Back">
     </form>
+
   </body>
 </html>
 

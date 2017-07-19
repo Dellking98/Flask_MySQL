@@ -14,35 +14,36 @@ import random
 app = Flask(__name__)
 app.secret_key ='secret'
 
-# def counter():
-#     session['counter1'] = random.randint( 1 , 100)
-
 @app.route('/')
 
 def gameWed():
+    if "counter1" not in session:
+        session['counter1'] = random.randint( 1 , 100)
     return render_template('gameWeb.html')
 
 @app.route('/gettingNum', methods=['POST'])
 
 def the_form():
-    user = int(request.form['inBox'])
-    session['counter1'] = random.randint( 1 , 100)
-    if user < session['counter1']:
-        session['user'] = 'Your numder is to low'
-        print 'Your numder is to low'
-    elif user > session['counter1']:
-        session['user'] = 'Your numder is to high'
-        print 'Your number is to high'
-    elif user is session['counter1']:
-        session['user'] = 'Winner'
-        print 'Winner'
+
+    # user = int(request.form['inBox'])
+
+    if session['counter1'] == int(request.form['inBox']):
+        session['result'] = 'correct'
+
+    elif session['counter1'] < int(request.form['inBox']):
+        session['result'] = 'high'
+
+    else:
+        session['result'] = 'low'
+
     return redirect('/')
 
-@app.route('/reset', methods = ["POST"])
+@app.route('/reset')
 
 def playAgain():
-    session.clear
-
+    # session.clear
+    session.pop('counter1')
+    session.pop('result')
     return redirect('/')
 
 app.run(debug = True)

@@ -7,24 +7,22 @@
   <body>
     <h1>Welcome to the Great Numder Game!</h1>
 
-    <p>I am thinking of a numder between 1 and 100</p>
+    <p>I'am thinking of a numder between 1 and 100</p>
     <p>Take a guess</p>
 
-
     <form class="" action="/gettingNum" method="post" >
-      <input type="text" name="inBox">
+      <input type="number" name="inBox">
       <input type="submit" name="submit" value="Submit Your Guess">
     </form>
 
-{%if session['user'] == 'Your numder is to low':%}
-  <p>Your numder is to low</p>
-{%elif session['user'] == 'Your numder is to high':%}
-  <p> Your number is to high</p>
-{%elif session['user'] == 'Winer':%}
-  <a href="/reset">Winner</a>
+{%if session['result'] == 'correct':%}
+  <h1>Winner winner</h1>
+  <a href="/reset">><button type="button" name="reset">Play again</button></a>
+{%elif session['result'] == 'high':%}
+  <h1>Your guess is to high</h1>
+{%elif session['result'] == 'low':%}
+  <h1>Your guess is to low</h1>
 {%endif%}
-
-
 
 
   </body>

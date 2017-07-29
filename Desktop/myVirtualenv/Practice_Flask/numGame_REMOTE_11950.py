@@ -24,18 +24,6 @@ def gameWed():
 @app.route('/gettingNum', methods=['POST'])
 
 def the_form():
-    user = int(request.form['inBox'])
-    session['counter1'] = random.randint( 1 , 100)
-    if user < session['counter1']:
-        session['user'] = 'Your numder is to low'
-        print 'Your numder is to low'
-    elif user > session['counter1']:
-        session['user'] = 'Your numder is to high'
-        print 'Your number is to high'
-    elif user is session['counter1']:
-        session['user'] = 'Winner'
-        print 'Winner'
-    return redirect('/')
 
     # user = int(request.form['inBox'])
 

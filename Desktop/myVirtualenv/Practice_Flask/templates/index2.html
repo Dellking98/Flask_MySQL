@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>View From</title>
+  </head>
+  <body>
+    <h1>Registration Info</h1>
+    {% with messages = get_flashed_messages() %}
+      {%if messages%}
+        {%for message in messages%}
+          <p>{{ message }}</p>
+        {%endfor%}
+      {%endif%}
+    {%endwith%}
+
+    {% if error %}
+      <p class=error><strong>Error:</strong> {{ error }}</p>
+    {% endif %}
+
+    First Name: <p>{{ session['fName'] }}</p>
+    Last Name: <p>{{ session['lName'] }}</p>
+    First E-Mail: <p>{{ session['eMail'] }}</p>
+    First Password: <p>{{ session['pWord'] }}</p>
+
+  </body>
+</html>

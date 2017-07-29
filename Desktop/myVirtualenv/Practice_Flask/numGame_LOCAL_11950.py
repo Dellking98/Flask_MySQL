@@ -14,11 +14,12 @@ import random
 app = Flask(__name__)
 app.secret_key ='secret'
 
+# def counter():
+#     session['counter1'] = random.randint( 1 , 100)
+
 @app.route('/')
 
 def gameWed():
-    if "counter1" not in session:
-        session['counter1'] = random.randint( 1 , 100)
     return render_template('gameWeb.html')
 
 @app.route('/gettingNum', methods=['POST'])
@@ -37,25 +38,57 @@ def the_form():
         print 'Winner'
     return redirect('/')
 
-    # user = int(request.form['inBox'])
-
-    if session['counter1'] == int(request.form['inBox']):
-        session['result'] = 'correct'
-
-    elif session['counter1'] < int(request.form['inBox']):
-        session['result'] = 'high'
-
-    else:
-        session['result'] = 'low'
-
-    return redirect('/')
-
-@app.route('/reset')
+@app.route('/reset', methods = ["POST"])
 
 def playAgain():
-    # session.clear
-    session.pop('counter1')
-    session.pop('result')
+    session.clear
+
     return redirect('/')
 
 app.run(debug = True)
+
+# from flask import Flask, render_template, session, redirect, request
+# import random
+#
+# app = Flask(__name__)
+# app.secret_key = "ThisIsSecret"
+#
+# def sessRange
+#     session["range"] = random.randrange(0,11)
+#
+#
+# @app.route("/")
+# def great_numbers():
+#
+#     return render_template("gameWeb.html")
+#
+# @app.route("/guess", methods=["POST"])
+# def you_lost():
+#
+#
+#     print session
+#
+#     randRange = int(request.form["num_value"])
+#     print randRange
+#
+#     if session["range"] > randRange:
+#         session["randRange"] = "too low"
+#         print "too low"
+#
+#     elif session["range"] < randRange:
+#         session["randRange"] = "too high"
+#         print "too high"
+#     else:
+#         session["randRange"] = "you won"
+#         print "you won"
+#         #sessRange()
+#
+#     return redirect("/")
+#
+# @app.route("/refresh")
+# def you_won():
+#     session.clear()
+#     return redirect("/")
+#
+#
+# app.run(debug=True)

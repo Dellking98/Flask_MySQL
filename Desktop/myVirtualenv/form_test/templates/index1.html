@@ -6,11 +6,28 @@
   </head>
   <body>
     <h1>Index Page</h1>
+    
     <h3>Create a User</h3>
+    
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+        {% for messages in messages %}
+          <p>{{ messages }}</p>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
 
     <p>Your Name: {{ session['name']  }}</p>
+<<<<<<< HEAD
     <p>Dojo Location: {{ session['select'] }}</p>
     <p>Favorite Language: {{ session['select1'] }}</p>
+=======
+    
+    <p>Dojo Location: {{ session['select'] }}</p>
+    
+    <p>Favorite Language: {{ session['select1'] }}</p>
+    
+>>>>>>> 46f67868cf29986bb23eaabd6f99c3ee786e6b50
     <p>Comment: {{ session['comment'] }}</p>
 
     <form class="" action="reset" method="post">

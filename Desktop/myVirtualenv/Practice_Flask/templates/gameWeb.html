@@ -7,15 +7,15 @@
   <body>
     <h1>Welcome to the Great Numder Game!</h1>
 
-    <p>I am thinking of a numder between 1 and 100</p>
+    <p>I'am thinking of a numder between 1 and 100</p>
     <p>Take a guess</p>
 
-
     <form class="" action="/gettingNum" method="post" >
-      <input type="text" name="inBox">
+      <input type="number" name="inBox">
       <input type="submit" name="submit" value="Submit Your Guess">
     </form>
 
+<<<<<<< HEAD
 {%if session['user'] == 'Your numder is to low':%}
   <p>Your numder is to low</p>
 {%elif session['user'] == 'Your numder is to high':%}
@@ -27,43 +27,20 @@
 
 
 
+=======
+{%if session['result'] == 'correct':%}
+  <h1>Winner winner</h1>
+  <a href="/reset">><button type="button" name="reset">Play again</button></a>
+{%elif session['result'] == 'high':%}
+  <h1>Your guess is to high</h1>
+{%elif session['result'] == 'low':%}
+  <h1>Your guess is to low</h1>
+{%endif%}
+
+
+>>>>>>> 46f67868cf29986bb23eaabd6f99c3ee786e6b50
   </body>
 </html>
 
 
-<!-- <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="utf-8">
-        <title>Great Numbers Game</title>
-    </head>
-    <body>
-        <h1>The Great Numbers Game!!!</h1>
-        <p>I am thinking of a number between 1 and 100</p>
-        <p>Take a guess</p>
 
-        <form action="/guess" method="POST">
-            <input type="number" name="num_value">
-            <input type="submit" value="Submit">
-
-        </form>
-
-                        {% if "too low" == session["randRange"] %}
-                            <div class="too_low">
-                                <p>Too Low!!</p>
-                            </div>
-
-                        {% elif "too high" == session["randRange"] %}
-                            <div class="too_high">
-                                <p>Too High!!</p>
-                            </div>
-
-                        {% elif "you won" == session["randRange"] %}
-                            <div class="you_won">
-                                <p>You Won!!</p>
-                                <p>Play Again</p>
-                                <a href="/refresh">/Restart</a>
-                            </div>
-                        {% endif %}
-    </body>
-</html> -->

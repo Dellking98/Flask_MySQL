@@ -1,0 +1,39 @@
+<html>
+<head>
+  <title>Friends</title>
+</head>
+<body>
+  <h1>These are all my friends!</h1>
+  {%for friends in all_friends%}
+  <p>ID:{{friends['id']}}</p>
+  <p>First Name {{friends['first_name']}}</p>
+  <p>Last Name {{friends['last_name']}}</p>
+  <p>Occupation {{friends['occupation']}}</p>
+  <hr>
+  {%endfor%}
+  <h2>Add a Friend</h2>
+  <form action='/friends' method='POST'>
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+    <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+    <input type="submit" value="Add">
+  </form>
+  <h1>Update you info</h1>
+  <form action='/update_friend/<friend_id>' method='POST'>
+    <input type="numder" name="friend_id" placeholder="Put ID Numder">
+    <label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label>
+    <label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label>
+    <label for="occupation">Occupation:<input type="text" name="occupation" id="occupation"></label>
+
+    <input name="update" type="submit" id="update" value="Update">
+  </form>
+
+  <form action='/remove_friend/<friend_id>' method='POST'>
+    <input type="numder" name="friend_id" placeholder="Put ID Numder">
+    <input name="remove" type="submit" id="remove" value="remove">
+  </form>
+
+
+
+</body>
+</html>

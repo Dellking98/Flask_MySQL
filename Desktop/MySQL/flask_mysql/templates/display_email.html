@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>The email</title>
+  </head>
+  <body>
+    <h1>Here are all the User's Email !</h1>
+    {%for email in all_users%}
+    <p>ID:{{email['id']}}</p>
+    <p>Email {{email['email']}}</p>
+    <hr>
+    {%endfor%}
+  </body>
+
+  <form action='/remove_friend/<users_id>' method='POST'>
+    <input type="numder" name="users_id" placeholder="Put ID Numder">
+    <input name="remove" type="submit" id="remove" value="remove">
+  </form>
+
+  <form class="" action="display_email">
+    <input type="submit" name="submit" value="Go Back To Form">
+  </form>
+
+</html>

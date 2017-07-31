@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Edit Page</title>
+  </head>
+  <body>
+
+
+    {%for friend in friends%}
+    <form action="/friends/{{friend['id']}}" method="post">
+      <label for="">First Name: <input type="text" name="first_name" values="{{friend['first_name']}}" ></label>
+      <label for="">Last Name: <input type="text" name="last_name" values="{{friend['last_name']}}"> </label>
+      <label for="">Email: <input type="text" name="email" values="{{friend['email']}}"></label>
+      <input type="submit" name="submit" value="Edit">
+    </form>
+    {%endfor%}
+  </body>
+</html>
+
+
+<!-- {%for friend in friends%}
+<form action="/friends/{{friends_id}}" method="post">
+  <label for="">First Name: <input type="text" name="first_name" values="{{friend['first_name']}}" ></label>
+  <label for="">Last Name: <input type="text" name="last_name" values="{{friend['last_name']}}"> </label>
+  <label for="">Email: <input type="text" name="email" values="{{friend['email']}}"></label>
+  <input type="submit" name="submit" value="Edit">
+</form>
+{%endfor%} -->

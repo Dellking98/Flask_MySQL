@@ -9,7 +9,7 @@ app.secret_key = ('secret_key')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index1.html')
 
 @app.route('/register', methods = ['POST'])
 def register():
@@ -55,8 +55,8 @@ def register():
             return redirect('/')
 
         else:
-            pw_hash = bcrypt.generate_password_hash('password')
-            insert_query = "INSERT INTO users (first_name, last_name, email, password, created_at, updated_at) VALUES (:first_name, :last_name, :email, :pw_hash, NOW(), NOW())"
+            pw_hash = bcrypt.generate_password_hash(password)
+            insert_query = "INSERT INTO users (first_name, last_name, email, pw_hash, created_at, updated_at) VALUES (:first_name, :last_name, :email, :pw_hash, NOW(), NOW())"
             query_data = {
                 'first_name': request.form['first_name'],
                 'last_name': request.form['last_name'],
@@ -67,9 +67,29 @@ def register():
             # test = mysql.query_db = (insert_query, query_data)
             mysql.query_db(insert_query, query_data)
             # print test
-            return render_template('success.html', first_name=first_name)
+            return render_template('success1.html', first_name=first_name)
 
 @app.route('/login', methods=['POST'])
+
+# def login():
+#     email = request.form['email']
+#     password = request.form['password']
+#     select_query = "SELECT * FROM users WHERE email = :email LIMIT 1"
+#     query_data = {'email': email}
+#     user = mysql.query_db(select_query, query_data)
+#     print user
+#
+#     if len(user) > 0:
+#
+#         if bcrypt.check_password_hash(user[0]['pw_hash'], password):
+#             session['user_id'] = user[0]['id']
+#             return render_template('success1.html')
+#
+#         else:
+#             flash('Email/Password combination does not match')
+#             return redirect('/')
+#     return render_template('success1.html')
+
 def login():
     email = request.form['email']
     password = request.form['password']
@@ -78,15 +98,16 @@ def login():
     user = mysql.query_db(select_query, query_data)
     print user
 
-    if len(user) > 0:
+    # if len(user) > 0:
 
-        if bcrypt.check_password_hash(user[0]['password'], password):
-            session['user_id'] = user[0]['id']
-            return render_template('success.html')
+    if bcrypt.check_password_hash(user[0]['pw_hash'], password):
+        session['users.id'] = user[0]['id']
+        return render_template('success1.html')
 
-        else:
-            flash('Email/Password combination does not match')
-            return redirect('/')
+    else:
+        flash('Email/Password combination does not match')
+        return redirect('/')
+
 
 
 app.run(debug=True)
